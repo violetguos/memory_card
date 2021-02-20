@@ -1,6 +1,8 @@
 # memory card 
 
-Memory card game created for the Odin project. Created scratch by me.
+Memory card game created for the Odin project. Created from scratch by me.
+
+Rule: click on a card, but never click on the same card twice!
 
 ## technology used
 - react hooks

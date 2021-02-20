@@ -1,10 +1,14 @@
 import {useState} from 'react'
 
-const Card = () => {
+const Card = (props) => {
+  console.log(props)
   const [hit, setHit] = useState(0);
   const onHit = (e) => {
     e.preventDefault();
-    setHit(hit + 1);
+    if(!props.eventReset)
+      setHit(hit + 1);
+    else
+      setHit(0);
   }
   return (
     <div>

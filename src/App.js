@@ -1,11 +1,11 @@
 import './App.css';
-import Card from './Component/Card'
+import Grid from './Component/Grid'
 
 const App = () => {
   return (
     <div className="App">
       hello
-      <Card />
+      <Grid />
     </div>
   );
 }
