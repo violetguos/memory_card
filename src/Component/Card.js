@@ -1,18 +1,28 @@
 import {useState} from 'react'
 
 const Card = (props) => {
-  console.log(props)
   const [hit, setHit] = useState(0);
+  const [hitButtons, setHitButtons] = useState([]);
   const onHit = (e) => {
     e.preventDefault();
-    if(!props.eventReset)
-      setHit(hit + 1);
-    else
+    // the hitButtons keeps track of which card was clicked on last time
+    if(hitButtons.includes(e.target.value)){
       setHit(0);
+      setHitButtons([]);
+    }
+    else{
+      setHit(hit + 1);
+      setHitButtons([...hitButtons,
+        e.target.value]);
+    }
+    console.log(hitButtons);
   }
+
   return (
     <div>
-      <button onClick={onHit}>Card</button>
+      {/*hard coded 2 buttons to represent cards for early prototyping */}
+      <button onClick={onHit} value="1">Card1</button>
+      <button onClick={onHit} value="2">Card2</button>
       <p>{hit}</p>
     </div>
   )

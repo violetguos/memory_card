@@ -1,11 +1,12 @@
 import './App.css';
-import Grid from './Component/Grid'
+import Card from './Component/Card.js'
+// import Grid from './Component/Grid.js'
 
 const App = () => {
   return (
     <div className="App">
       hello
-      <Grid />
+      <Card />
     </div>
   );
 }
