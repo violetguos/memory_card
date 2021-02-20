@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import Button from './Button.js'
 
 const Card = (props) => {
   const [hit, setHit] = useState(0);
@@ -21,8 +22,11 @@ const Card = (props) => {
   return (
     <div>
       {/*hard coded 2 buttons to represent cards for early prototyping */}
-      <button onClick={onHit} value="1">Card1</button>
-      <button onClick={onHit} value="2">Card2</button>
+      {/* <button onClick={onHit} value="1">Card1</button>
+      <button onClick={onHit} value="2">Card2</button> */}
+      <Button onClick={onHit} value='1'/>
+      <Button onClick={onHit} value='2'/>
+
       <p>{hit}</p>
     </div>
   )
