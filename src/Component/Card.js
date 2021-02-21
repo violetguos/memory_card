@@ -24,6 +24,7 @@ const Card = (props) => {
       {/*hard coded 2 buttons to represent cards for early prototyping */}
       {/* <button onClick={onHit} value="1">Card1</button>
       <button onClick={onHit} value="2">Card2</button> */}
+      {/* onHit event fires inside the Button component */}
       <Button onClick={onHit} value='1'/>
       <Button onClick={onHit} value='2'/>
 
