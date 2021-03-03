@@ -19,14 +19,41 @@ const Card = (props) => {
     console.log(hitButtons);
   }
 
+  const cards = ['1', '2', '3'];
+
+  const shuffleArray = (array) => {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
+
   return (
     <div>
       {/*hard coded 2 buttons to represent cards for early prototyping */}
-      {/* <button onClick={onHit} value="1">Card1</button>
-      <button onClick={onHit} value="2">Card2</button> */}
       {/* onHit event fires inside the Button component */}
-      <Button onClick={onHit} value='1'/>
-      <Button onClick={onHit} value='2'/>
+
+      
+      {shuffleArray(cards).map((c) => {
+          return (
+            <Button onClick={onHit} value={c}/>
+          );
+        })
+      }
+
 
       <p>{hit}</p>
     </div>
