@@ -1,14 +1,21 @@
-import {useState} from 'react'
-import Button from './Button.js'
+import {Fragment, useState} from 'react';
+import Button from './Button.js';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 const Card = (props) => {
   const [hit, setHit] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
   const [hitButtons, setHitButtons] = useState([]);
   const onHit = (e) => {
     e.preventDefault();
     // the hitButtons keeps track of which card was clicked on last time
     if(hitButtons.includes(e.target.value)){
       setHit(0);
+      if(hit > bestScore){
+        setBestScore(hit);
+      }
       setHitButtons([]);
     }
     else{
@@ -19,7 +26,7 @@ const Card = (props) => {
     console.log(hitButtons);
   }
 
-  const cards = ['1', '2', '3'];
+  const cards = ['1', '2', '3', '4', '5', '6'];
 
   const shuffleArray = (array) => {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -40,23 +47,41 @@ const Card = (props) => {
     return array;
   }
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+  }));
+  
+  const classes = useStyles();
+
 
   return (
-    <div>
+    <Fragment>
       {/*hard coded 2 buttons to represent cards for early prototyping */}
       {/* onHit event fires inside the Button component */}
 
-      
-      {shuffleArray(cards).map((c) => {
-          return (
-            <Button onClick={onHit} value={c}/>
-          );
-        })
-      }
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          {shuffleArray(cards).map((c) => {
+            return (
+              <Grid item xs={6} sm={3}>
+                <Button onClick={onHit} value={c}/>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </div>
 
+      <p>Current score: {hit}</p>
+      <p>Best score: {bestScore}</p>
 
-      <p>{hit}</p>
-    </div>
+    </Fragment>
   )
 }
 
