@@ -75,7 +75,7 @@ const CardGrid = (props) => {
     setBestScore(0);
     setHitButtons([]);
   };
-  
+
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
