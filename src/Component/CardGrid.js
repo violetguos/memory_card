@@ -2,6 +2,7 @@ import {Fragment, useState} from 'react';
 import Button from './Button.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import ButtonAppBar from '../Component/NavBar.js'
 
 import doge_1 from '../imgs/doge_1.jpg';
 import doge_2 from '../imgs/doge_2.jpg';
@@ -9,6 +10,12 @@ import doge_3 from '../imgs/doge_3.jpg';
 import doge_4 from '../imgs/doge_4.jpg';
 import doge_5 from '../imgs/doge_5.jpg';
 import doge_6 from '../imgs/doge_6.jpg';
+import doge_7 from '../imgs/doge_7.jpg';
+import doge_8 from '../imgs/doge_8.jpg';
+import doge_9 from '../imgs/doge_9.jpg';
+import doge_10 from '../imgs/doge_10.jpg';
+import doge_11 from '../imgs/doge_11.jpg';
+import doge_12 from '../imgs/doge_12.jpg';
 
 
 const CardGrid = (props) => {
@@ -31,13 +38,15 @@ const CardGrid = (props) => {
         e.currentTarget.value]);
 
     }
-    console.log(e.currentTarget);
-    console.log(hitButtons);
+
   }
-  // tried the readdir from 'fs' library
+  // tried the readdir from 'fs' library, didn't work with react
   const cards_index = [];
-  const cards = [doge_1, doge_2, doge_3, doge_4, doge_5, doge_6];
-  for(let i=0; i<6; i++){
+  const cards = [
+    doge_1, doge_2, doge_3, doge_4, doge_5, doge_6,
+    doge_7, doge_8, doge_9, doge_10, doge_11, doge_12
+  ];
+  for(let i=0; i<12; i++){
     cards_index.push(i);
   }
 
@@ -60,6 +69,13 @@ const CardGrid = (props) => {
     return array;
   }
 
+  const restart = (e) => {
+    e.preventDefault();
+    setHit(0);
+    setBestScore(0);
+    setHitButtons([]);
+  };
+  
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -73,7 +89,10 @@ const CardGrid = (props) => {
     <Fragment>
       {/*hard coded 2 buttons to represent cards for early prototyping */}
       {/* onHit event fires inside the Button component */}
-
+      <ButtonAppBar onClick={restart}/>
+      <p>Current score: {hit}</p>
+      <p>Best score: {bestScore}</p>
+      <p>Rule of the game: remember what you clicked on!</p>
       <div className={classes.root}>
         <Grid container spacing={3}>
           {shuffleArray(cards_index).map((c) => {
@@ -86,8 +105,7 @@ const CardGrid = (props) => {
         </Grid>
       </div>
 
-      <p>Current score: {hit}</p>
-      <p>Best score: {bestScore}</p>
+
 
     </Fragment>
   )

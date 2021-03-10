@@ -1,25 +1,62 @@
+:root{
+  --section-width: 700px;
+  --grid-size: calc(var(--section-width)*0.325);
+  --card-size: calc(var(--section-width)*0.5);
+}
+
 .App {
   text-align: center;
+  font-family: "Comic Sans MS";
 }
 
 .card {
   text-align: center;
-  color: white;
+  color: orange;
   outline: none;
   cursor: pointer;
   font-size: 19px;
   margin-bottom: 20px;
   padding: 20px;
   border-radius: 8px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-weight: 600;
+  height: var(--card-size);
+  font-family: "Comic Sans MS";
 }
 figure{
-  height: 200px;
-  width: 200px;
+  height: var(--grid-size);
+  width: var(--grid-size);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 figure img{
   max-height: 100%;
   max-width: 100%;
+  /* border: 5px solid #555; */
+}
+
+@media (max-width: 700px) {
+  :root{
+      --section-width: 90%;
+      --grid-size: calc(var(--section-width)*0.8);
+      --card-size: calc(var(--section-width)*0.9);
+
+  }
+  figure{
+    height: var(--grid-size);
+    width: var(--grid-size);
+  }
+}
+
+@media (max-width: 500px) {
+  :root{
+      --section-width: 90%;
+      --grid-size: calc(var(--section-width)*0.8);
+      --card-size: calc(var(--section-width)*0.9);
+  }
+  figure{
+    height: var(--grid-size);
+    width: var(--grid-size);
+  }
+
 }

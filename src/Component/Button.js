@@ -1,7 +1,6 @@
 // import {useState} from 'react'
 
 const Button = (props) => {
-  console.log(props.value);
   return (
     <button 
       className="card"
