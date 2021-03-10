@@ -1,10 +1,12 @@
 import {Fragment, useState} from 'react';
 import Button from './Button.js';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-const Card = (props) => {
+import doge_1 from '../imgs/doge_1.jpg';
+
+
+const CardGrid = (props) => {
   const [hit, setHit] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [hitButtons, setHitButtons] = useState([]);
@@ -22,11 +24,18 @@ const Card = (props) => {
       setHit(hit + 1);
       setHitButtons([...hitButtons,
         e.target.value]);
+
     }
+    console.log(e.target.value);
     console.log(hitButtons);
   }
-
-  const cards = ['1', '2', '3', '4', '5', '6'];
+  // tried the readdir from 'fs' library
+  const cards_index = [];
+  const cards = [];
+  for(let i=1; i<=12; i++){
+    cards_index.push(i);
+    cards.push('doge_'+String(i)+'.jpg')
+  }
 
   const shuffleArray = (array) => {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -68,10 +77,10 @@ const Card = (props) => {
 
       <div className={classes.root}>
         <Grid container spacing={3}>
-          {shuffleArray(cards).map((c) => {
+          {shuffleArray(cards_index).map((c) => {
             return (
               <Grid item xs={6} sm={3}>
-                <Button onClick={onHit} value={c}/>
+                <Button onClick={onHit} value={c} src={doge_1}/>
               </Grid>
             );
           })}
@@ -85,4 +94,4 @@ const Card = (props) => {
   )
 }
 
-export default Card;
+export default CardGrid;
