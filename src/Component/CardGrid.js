@@ -4,6 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 import doge_1 from '../imgs/doge_1.jpg';
+import doge_2 from '../imgs/doge_2.jpg';
+import doge_3 from '../imgs/doge_3.jpg';
+import doge_4 from '../imgs/doge_4.jpg';
+import doge_5 from '../imgs/doge_5.jpg';
+import doge_6 from '../imgs/doge_6.jpg';
 
 
 const CardGrid = (props) => {
@@ -13,7 +18,7 @@ const CardGrid = (props) => {
   const onHit = (e) => {
     e.preventDefault();
     // the hitButtons keeps track of which card was clicked on last time
-    if(hitButtons.includes(e.target.value)){
+    if(hitButtons.includes(e.currentTarget.value)){
       setHit(0);
       if(hit > bestScore){
         setBestScore(hit);
@@ -23,18 +28,17 @@ const CardGrid = (props) => {
     else{
       setHit(hit + 1);
       setHitButtons([...hitButtons,
-        e.target.value]);
+        e.currentTarget.value]);
 
     }
-    console.log(e.target.value);
+    console.log(e.currentTarget);
     console.log(hitButtons);
   }
   // tried the readdir from 'fs' library
   const cards_index = [];
-  const cards = [];
-  for(let i=1; i<=12; i++){
+  const cards = [doge_1, doge_2, doge_3, doge_4, doge_5, doge_6];
+  for(let i=0; i<6; i++){
     cards_index.push(i);
-    cards.push('doge_'+String(i)+'.jpg')
   }
 
   const shuffleArray = (array) => {
@@ -59,12 +63,7 @@ const CardGrid = (props) => {
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
+    }
   }));
   
   const classes = useStyles();
@@ -80,7 +79,7 @@ const CardGrid = (props) => {
           {shuffleArray(cards_index).map((c) => {
             return (
               <Grid item xs={6} sm={3}>
-                <Button onClick={onHit} value={c} src={doge_1}/>
+                <Button onClick={onHit} value={c} src={cards[c]}/>
               </Grid>
             );
           })}
