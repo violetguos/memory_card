@@ -6,7 +6,6 @@ const StyledButton = styled('button')(({ theme }) => ({
   outline: 'none',
   cursor: 'pointer',
   fontSize: 19,
-  marginBottom: 20,
   padding: 20,
   borderRadius: 8,
   fontWeight: 600,
@@ -14,6 +13,13 @@ const StyledButton = styled('button')(({ theme }) => ({
   border: 'none',
   width: '100%',
   height: 350,
+  backgroundColor: '#fff',
+  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+  transition: 'box-shadow 0.2s, transform 0.2s',
+  '&:hover': {
+    boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+    transform: 'translateY(-2px)',
+  },
   [theme.breakpoints.down('md')]: {
     height: '76.5vw',
   },

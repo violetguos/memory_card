@@ -50,16 +50,18 @@ const CardGrid = () => {
       {/*hard coded 2 buttons to represent cards for early prototyping */}
       {/* onHit event fires inside the Button component */}
       <ButtonAppBar onClick={restart} />
-      <p>Current score: {hit}</p>
-      <p>Best score: {bestScore}</p>
-      <p>Rule of the game: remember what you clicked on!</p>
-      <Grid container spacing={3} sx={{ flexGrow: 1 }}>
+      <div style={{ maxWidth: 900, margin: '0 auto' }}>
+        <p>Current score: {hit}</p>
+        <p>Best score: {bestScore}</p>
+        <p>Rule of the game: remember what you clicked on!</p>
+        <Grid container>
         {shuffleArray(indices).map((c) => (
-          <Grid size={{ xs: 6, sm: 3 }} key={c}>
+          <Grid size={{ xs: 6, md: 4 }} key={c} sx={{ p: 2 }}>
             <Button onClick={onHit} value={c} src={cards[c]} />
           </Grid>
         ))}
       </Grid>
+      </div>
     </Fragment>
   );
 };
